@@ -13,6 +13,7 @@ export default function Index() {
         <Image
           className="left-0 right-0 m-auto"
           src="/milky-green-v1.avif"
+          alt="milky-green"
           width={800}
           height={800}
         />
