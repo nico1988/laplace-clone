@@ -1,10 +1,13 @@
 import Image from 'next/image';
 import styles from './page.module.css';
 
+// components
+import NavBar from '@/components/NavBar';
+
 export default function Index() {
   return (
     <main>
-      <nav />
+      <NavBar />
       <div className="absolute top-20 z-10 w-full text-center text-[#b0baba]">
         <h1 className="mb-3 cursor-pointer text-center text-[64px]">LAPLACE</h1>
         <div className="cursor-pointer text-center text-[24px]">
