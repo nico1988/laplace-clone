@@ -11,7 +11,7 @@ export default function Index() {
           奶绿只是想偷偷睡一会
         </div>
       </div>
-      {/* give me bg-container with image full screen for background */}
+
       <div className="absolute top-0 left-0 right-0 bottom-0 opacity-50">
         <Image
           className="h-full w-full object-cover"
