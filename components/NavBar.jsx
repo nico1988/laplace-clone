@@ -11,7 +11,7 @@ export default function NavBar() {
     {
       icon: '/calendar.svg',
       title: '日程',
-      href: 'calender',
+      href: 'calendar',
     },
     {
       icon: '/music.svg',
