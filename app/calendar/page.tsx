@@ -2,12 +2,50 @@ export default function CalendarPage() {
   const mockSummaryInfo = {
     total: 156,
     history: '新账号开通直播间 —2022-05-15 直播',
+    detailList: [
+      {
+        key: 'talk',
+        total: 18,
+      },
+      {
+        key: 'game',
+        total: 14,
+      },
+      {
+        key: 'watching',
+        total: 18,
+      },
+      {
+        key: 'submission',
+        total: 2,
+      },
+      {
+        key: 'music',
+        total: 5,
+      },
+      {
+        key: 'exercise',
+        total: 23,
+      },
+      {
+        key: 'radio',
+        total: 6,
+      },
+      {
+        key: 'collaborative',
+        total: 14,
+      },
+      {
+        key: 'special',
+        total: 2,
+      },
+    ],
   };
 
-  const mockCategoryConfig = {
+  const categoryConfig = {
     talk: {
       title: '杂谈',
-      color: '#FFC55',
+      color: '#FFC552',
     },
     game: {
       title: '游戏',
@@ -54,7 +92,7 @@ export default function CalendarPage() {
       {/* page title */}
       <div className="flex flex-col items-center">
         <div className="text-[64px]">Schedule</div>
-        <div className=" text-2xl">活动/直播日程</div>
+        <div className="text-2xl">活动/直播日程</div>
       </div>
       <div className=" w-full">
         <div>
@@ -62,6 +100,20 @@ export default function CalendarPage() {
           共直播{mockSummaryInfo.total}场/iCal <a href="calendar">日历订阅</a>
         </div>
         <div>历史上的今天：{mockSummaryInfo.history}</div>
+        <div>
+          {mockSummaryInfo.detailList.map((item, index) => {
+            const type = categoryConfig[item.key];
+            const style = { color: type.color };
+            return (
+              <span style={style} key={item.key}>
+                {/* <span className={`text-[${type.color}]`} key={item.key}> */}
+                {type.title}
+                {item.total}
+                {index === mockSummaryInfo.detailList.length - 1 ? '' : '、'}
+              </span>
+            );
+          })}
+        </div>
       </div>
     </div>
   );
