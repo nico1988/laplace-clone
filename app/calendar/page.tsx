@@ -1,4 +1,11 @@
-export default function CalendarPage() {
+import getCalendarList from './mock.js';
+
+async function getData() {
+  const data = getCalendarList(5);
+  return data;
+}
+
+export default async function CalendarPage() {
   const mockSummaryInfo = {
     total: 156,
     history: '新账号开通直播间 —2022-05-15 直播',
@@ -41,7 +48,6 @@ export default function CalendarPage() {
       },
     ],
   };
-
   const categoryConfig = {
     talk: {
       title: '杂谈',
@@ -79,12 +85,14 @@ export default function CalendarPage() {
       title: '特殊',
       color: '#FFDD33',
     },
+    break: {
+      title: '休息',
+      color: '#B0BAAB',
+    },
   };
+  const eventWidth = '180px';
 
-  /* TODO
-   *  mock每天的数据需要包含：日期，当日内容des，link（如果有），type： ’watching‘等分类
-   *  以周为list
-   */
+  const data = await getData();
 
   // TODO 字体使用全局样式 每个div最小宽度80px
   return (
@@ -94,6 +102,8 @@ export default function CalendarPage() {
         <div className="text-[64px]">Schedule</div>
         <div className="text-2xl">活动/直播日程</div>
       </div>
+
+      {/* page info */}
       <div className=" w-full">
         <div>
           {/* TODO 链接 */}
@@ -114,6 +124,32 @@ export default function CalendarPage() {
             );
           })}
         </div>
+      </div>
+
+      {/* calendar */}
+      <div>
+        {data.map((item, index) => (
+          <div key={item.date} className="flex w-full gap-[8px]">
+            <div>{item.date}</div>
+            {item.activities.map((activity) => {
+              const type = categoryConfig[activity.type];
+              const style = { color: type.color };
+              return (
+                <div
+                  className={`event__wrapper min-w-[${eventWidth}]`}
+                  key={activity.type}
+                  style={style}
+                >
+                  <div className="event__title">
+                    <div>{item.date}</div>
+                    <div>{type.title}</div>
+                  </div>
+                  <div className="event__content">{activity.content}</div>
+                </div>
+              );
+            })}
+          </div>
+        ))}
       </div>
     </div>
   );
