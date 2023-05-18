@@ -91,6 +91,7 @@ export default async function CalendarPage() {
     },
   };
   const eventWidth = '180px';
+  const contentWrapperStyle = { 'background-color': 'rgba(8, 18, 14, 0.4)' };
 
   const data = await getData();
 
@@ -103,53 +104,66 @@ export default async function CalendarPage() {
         <div className="text-2xl">活动/直播日程</div>
       </div>
 
-      {/* page info */}
-      <div className=" w-full">
-        <div>
-          {/* TODO 链接 */}
-          共直播{mockSummaryInfo.total}场/iCal <a href="calendar">日历订阅</a>
-        </div>
-        <div>历史上的今天：{mockSummaryInfo.history}</div>
-        <div>
-          {mockSummaryInfo.detailList.map((item, index) => {
-            const type = categoryConfig[item.key];
-            const style = { color: type.color };
-            return (
-              <span style={style} key={item.key}>
-                {/* <span className={`text-[${type.color}]`} key={item.key}> */}
-                {type.title}
-                {item.total}
-                {index === mockSummaryInfo.detailList.length - 1 ? '' : '、'}
-              </span>
-            );
-          })}
-        </div>
-      </div>
-
-      {/* calendar */}
-      <div>
-        {data.map((item, index) => (
-          <div key={item.date} className="flex w-full gap-[8px]">
-            <div>{item.date}</div>
-            {item.activities.map((activity) => {
-              const type = categoryConfig[activity.type];
+      <div className="content__wrapper" style={contentWrapperStyle}>
+        {/* page info */}
+        <div className=" w-full">
+          <div>
+            {/* TODO 链接 */}
+            共直播<span className="text-white">{mockSummaryInfo.total}</span>
+            场/iCal <a href="calendar">日历订阅</a>
+          </div>
+          <div>历史上的今天：{mockSummaryInfo.history}</div>
+          <div>
+            {mockSummaryInfo.detailList.map((item, index) => {
+              const type = categoryConfig[item.key];
               const style = { color: type.color };
               return (
-                <div
-                  className={`event__wrapper min-w-[${eventWidth}]`}
-                  key={activity.type}
-                  style={style}
-                >
-                  <div className="event__title">
-                    <div>{item.date}</div>
-                    <div>{type.title}</div>
-                  </div>
-                  <div className="event__content">{activity.content}</div>
-                </div>
+                <span style={style} key={item.key}>
+                  {/* <span className={`text-[${type.color}]`} key={item.key}> */}
+                  {type.title}
+                  {item.total}
+                  {index === mockSummaryInfo.detailList.length - 1 ? '' : '、'}
+                </span>
               );
             })}
           </div>
-        ))}
+        </div>
+
+        {/* calendar */}
+        <div className="calendar__wrapper grid gap-y-1">
+          {data.map((item, index) => (
+            <div key={item.date} className="w-full gap-[8px]">
+              <div>{item.date}</div>
+              <div className="flex">
+                {item.activities.map((activity) => {
+                  const type = categoryConfig[activity.type];
+                  const hexToRgb = (hex) => {
+                    const rgb = [];
+                    for (let i = 1; i < 7; i += 2) {
+                      rgb.push(parseInt(`0x${hex.slice(i, i + 2)}`));
+                    }
+                    return rgb.join(',');
+                  };
+                  const style = {
+                    color: type.color,
+                    minWidth: eventWidth,
+                    maxWidth: eventWidth,
+                    background: `rgba(${hexToRgb(type.color)},0.1)`,
+                  };
+                  return (
+                    <div key={activity.date} style={style}>
+                      <div className="event__title">
+                        <div>{item.date}</div>
+                        <div>{type.title}</div>
+                      </div>
+                      <div className="event__content">{activity.content}</div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

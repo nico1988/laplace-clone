@@ -10,9 +10,12 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body>
+      <body className="text-[#b0baab]">
         <NavBar />
-        <div className="absolute top-0 left-0 right-0 bottom-0 opacity-50">
+        <div
+          className="absolute top-0 left-0 right-0 bottom-0 -z-10"
+          style={{ background: 'linear-gradient(0deg,#08120e66,#08120e)' }}
+        >
           <Image
             className="h-full w-full object-cover"
             src="/bg-original.jpeg"
@@ -20,6 +23,10 @@ export default function RootLayout({
             layout="fill"
           />
         </div>
+        <div
+          className="absolute top-0 left-0 right-0 bottom-0 -z-10"
+          style={{ background: 'linear-gradient(0deg,#08120e66,#08120e)' }}
+        />
         {children}
       </body>
     </html>
