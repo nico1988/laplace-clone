@@ -6,7 +6,7 @@ export default function NavBar() {
     {
       icon: '/home.svg',
       title: '首页',
-      href: '',
+      href: '/',
     },
     {
       icon: '/calendar.svg',

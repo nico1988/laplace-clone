@@ -99,14 +99,17 @@ export default async function CalendarPage() {
   return (
     <div className="flex h-screen flex-col items-center px-4">
       {/* page title */}
-      <div className="flex flex-col items-center">
+      <div className="mb-4 flex flex-col items-center">
         <div className="text-[64px]">Schedule</div>
         <div className="text-2xl">活动/直播日程</div>
       </div>
 
-      <div className="content__wrapper" style={contentWrapperStyle}>
+      <div
+        className="content__wrapper rounded-lg py-6 px-4"
+        style={contentWrapperStyle}
+      >
         {/* page info */}
-        <div className=" w-full">
+        <div className="grid w-full gap-y-2">
           <div>
             {/* TODO 链接 */}
             共直播<span className="text-white">{mockSummaryInfo.total}</span>
@@ -130,11 +133,11 @@ export default async function CalendarPage() {
         </div>
 
         {/* calendar */}
-        <div className="calendar__wrapper grid gap-y-1">
+        <div className="calendar__wrapper mt-4 grid gap-y-3">
           {data.map((item, index) => (
-            <div key={item.date} className="w-full gap-[8px]">
+            <div key={item.date} className="grid w-full gap-y-1">
               <div>{item.date}</div>
-              <div className="flex">
+              <div className="flex gap-x-1">
                 {item.activities.map((activity) => {
                   const type = categoryConfig[activity.type];
                   const hexToRgb = (hex) => {
@@ -144,17 +147,27 @@ export default async function CalendarPage() {
                     }
                     return rgb.join(',');
                   };
-                  const style = {
+                  const eventWrapperStyle = {
+                    position: 'relative',
                     color: type.color,
                     minWidth: eventWidth,
                     maxWidth: eventWidth,
                     background: `rgba(${hexToRgb(type.color)},0.1)`,
                   };
+                  const typeStyle = {
+                    position: 'absolute',
+                    right: '0',
+                    top: '0',
+                  };
                   return (
-                    <div key={activity.date} style={style}>
+                    <div
+                      className="event__wrapper rounded"
+                      key={activity.date}
+                      style={eventWrapperStyle}
+                    >
                       <div className="event__title">
-                        <div>{item.date}</div>
-                        <div>{type.title}</div>
+                        <div>{activity.time}</div>
+                        <div style={typeStyle}>{type.title}</div>
                       </div>
                       <div className="event__content">{activity.content}</div>
                     </div>
