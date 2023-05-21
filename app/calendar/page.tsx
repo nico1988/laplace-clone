@@ -1,7 +1,8 @@
+import { CSSProperties } from 'react';
 import getCalendarList from './mock.js';
 
 async function getData() {
-  const data = getCalendarList(5);
+  const data = getCalendarList(17);
   return data;
 }
 
@@ -91,7 +92,9 @@ export default async function CalendarPage() {
     },
   };
   const eventWidth = '180px';
-  const contentWrapperStyle = { 'background-color': 'rgba(8, 18, 14, 0.4)' };
+  const contentWrapperStyle: CSSProperties = {
+    backgroundColor: 'rgba(8, 18, 14, 0.4)',
+  };
 
   const data = await getData();
 
@@ -143,18 +146,18 @@ export default async function CalendarPage() {
                   const hexToRgb = (hex) => {
                     const rgb = [];
                     for (let i = 1; i < 7; i += 2) {
-                      rgb.push(parseInt(`0x${hex.slice(i, i + 2)}`));
+                      rgb.push(parseInt(`0x${hex.slice(i, i + 2)}`, 16));
                     }
                     return rgb.join(',');
                   };
-                  const eventWrapperStyle = {
+                  const eventWrapperStyle: CSSProperties = {
                     position: 'relative',
                     color: type.color,
                     minWidth: eventWidth,
                     maxWidth: eventWidth,
                     background: `rgba(${hexToRgb(type.color)},0.1)`,
                   };
-                  const typeStyle = {
+                  const typeStyle: CSSProperties = {
                     position: 'absolute',
                     right: '0',
                     top: '0',
@@ -163,7 +166,7 @@ export default async function CalendarPage() {
                     <div
                       className="event__wrapper rounded"
                       key={activity.date}
-                      style={eventWrapperStyle}
+                      style={{ ...eventWrapperStyle }}
                     >
                       <div className="event__title">
                         <div>{activity.time}</div>
