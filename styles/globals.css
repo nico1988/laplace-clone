@@ -109,3 +109,29 @@ a {
     color-scheme: dark;
   }
 }
+
+@font-face {
+  font-family: 'Barlow Condensed';
+  src: url('/fonts/BarlowCondensed.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'ZCOOLXiaoWei';
+  src: url('/fonts/ZCOOLXiaoWei.ttf') format('truetype');
+  font-weight: normal;
+  font-style: normal;
+}
+
+html {
+  /* font-family: 'Barlow Condensed', sans-serif; */
+  font-family: 'ZCOOLXiaoWei', sans-serif;
+}
+
+.Barlow_Condensed {
+  font-family: 'Barlow Condensed', sans-serif;
+}
+
+.ZCOOLXiaoWei {
+  font-family: 'ZCOOLXiaoWei', sans-serif;
+}
