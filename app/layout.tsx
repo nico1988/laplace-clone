@@ -10,7 +10,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head />
-      <body className="text-[#b0baab]">
+      <body className="h-full text-[#b0baab]">
         <NavBar />
         <div
           className="absolute top-0 left-0 right-0 bottom-0 -z-10"

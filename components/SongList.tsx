@@ -9,7 +9,7 @@ export default function SongList(): ReactElement {
     <div>
       {list.map((song) => (
         <div
-          className="flex justify-between py-1 px-3 hover:bg-[#b0baab1a]"
+          className="Barlow_Condensed flex justify-between py-1 px-3 hover:bg-[#b0baab1a]"
           key={song.title}
         >
           <div>

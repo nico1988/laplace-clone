@@ -103,7 +103,7 @@ export default async function CalendarPage() {
     <div className="flex h-screen flex-col items-center px-4">
       {/* page title */}
       <div className="mb-4 flex flex-col items-center">
-        <div className="text-[64px]">Schedule</div>
+        <div className="Barlow_Condensed text-[64px]">Schedule</div>
         <div className="text-2xl">活动/直播日程</div>
       </div>
 

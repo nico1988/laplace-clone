@@ -8,7 +8,7 @@ export default function MusicList() {
     <div className="flex h-screen flex-col items-center px-4">
       {/* page title */}
       <div className="mb-4 flex flex-col items-center">
-        <div className="text-[64px]">Cover Songs</div>
+        <div className="Barlow_Condensed text-[64px]">Cover Songs</div>
         <div className="text-2xl">翻唱切片/歌单图鉴</div>
       </div>
 
@@ -41,7 +41,7 @@ export default function MusicList() {
               height={200}
               alt="music cover"
             />
-            <div className="mt-3 flex gap-x-1">
+            <div className="mt-4 flex gap-x-1">
               <Image
                 src="/listen-apple.svg"
                 width={listenOnXWidth}

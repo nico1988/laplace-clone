@@ -27,7 +27,7 @@ export default function NavBar() {
 
   return (
     <nav className="nav__wrapper mt-3">
-      <ul className="relative z-10 flex justify-center gap-2">
+      <ul className="relative z-10 flex justify-center gap-3">
         {NavList.map((item) => (
           <li key={item.title} className="flex items-center">
             <Image src={item.icon} width={fontSize} height={fontSize} />

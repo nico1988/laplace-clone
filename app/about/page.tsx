@@ -7,7 +7,7 @@ export default function AboutPage() {
     <div className="flex h-screen flex-col items-center px-4">
       {/* page title */}
       <div className="mb-4 flex flex-col items-center">
-        <div className="text-[64px]">About</div>
+        <div className="Barlow_Condensed text-[64px]">About</div>
         <div className="text-2xl">明前奶绿的基本信息</div>
         <Image
           src="/person-info.png"
