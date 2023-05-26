@@ -26,12 +26,32 @@ export default function NavBar() {
   ];
 
   return (
-    <nav className="nav__wrapper mt-3">
+    <nav className="nav__wrapper z-50 mt-3">
       <ul className="relative z-10 flex justify-center gap-3">
+        <a href="https://www.bilibili.com/" className="flex">
+          <Image
+            src="/bilibili.svg"
+            width={fontSize}
+            height={fontSize}
+            alt="bilibili"
+          />
+        </a>
+        <a href="https://weibo.com/" className="flex">
+          <Image
+            src="/weibo.svg"
+            width={fontSize}
+            height={fontSize}
+            b
+            alt="weibo"
+          />
+        </a>
+        <span>|</span>
         {NavList.map((item) => (
           <li key={item.title} className="flex items-center">
-            <Image src={item.icon} width={fontSize} height={fontSize} />
-            <a href={item.href}>{item.title}</a>
+            <a href={item.href} className="flex">
+              <Image src={item.icon} width={fontSize} height={fontSize} />
+              {item.title}
+            </a>
           </li>
         ))}
       </ul>

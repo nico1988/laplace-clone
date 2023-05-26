@@ -60,7 +60,6 @@ export default function Index() {
   }, []);
   return (
     <main>
-      <Light />
       <div className="absolute top-20 z-10 w-full text-center text-[#b0baba]">
         <h1 className="Barlow_Condensed mb-2 cursor-pointer text-center text-[64px]">
           LAPLACE
@@ -79,6 +78,7 @@ export default function Index() {
           height={550}
         />
       </div>
+      <Light />
     </main>
   );
 }
