@@ -7,7 +7,7 @@ import Light from '@/components/Light';
 
 export default function Index() {
   useEffect(() => {
-    const container = document.querySelector('.container');
+    const container = document.querySelector('body');
     const target = document.querySelector('.bg-pic');
 
     const mouse = {

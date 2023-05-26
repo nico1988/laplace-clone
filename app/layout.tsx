@@ -6,7 +6,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
   return (
     <html lang="en">
       <head />
-      <body className="container h-full w-full text-[#b0baab]">
+      <body className="h-full w-full text-[#b0baab]">
         <NavBar />
         <div className="container">
           <div
