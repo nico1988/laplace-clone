@@ -1,7 +1,9 @@
 'use client';
 
+import { CSSProperties } from 'react';
+
 export default function Light() {
-  const lightStyle = {
+  const lightStyle: CSSProperties = {
     background:
       'linear-gradient(343deg,rgba(255,255,193,.2),rgba(255,255,193,0))',
     width: '2500px',

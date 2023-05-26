@@ -7,8 +7,8 @@ import Light from '@/components/Light';
 
 export default function Index() {
   useEffect(() => {
-    const container = document.querySelector('body');
-    const target = document.querySelector('.bg-pic');
+    const container = document.querySelector('body') as HTMLElement;
+    const target = document.querySelector('.bg-pic') as HTMLElement;
 
     const mouse = {
       x: 0,
@@ -34,7 +34,9 @@ export default function Index() {
       const translateX = (0.5 - x) * 70;
       const translateY = (0.5 - y) * 70;
 
-      const light = document.getElementsByClassName('light');
+      const light = document.getElementsByClassName(
+        'light'
+      ) as unknown as HTMLElement[];
       for (let i = 0; i < light.length; i++) {
         light[i].style.translate = `${translateX + (i + 1) * 5}px ${
           translateY + (i + 1) * 20
