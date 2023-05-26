@@ -1,51 +1,12 @@
-'use client';
-
 import '../styles/globals.css';
 import Image from 'next/image';
-import { useEffect } from 'react';
 import NavBar from '@/components/NavBar';
 
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  useEffect(() => {
-    const container = document.querySelector('.container');
-    const target = document.querySelector('.bg-pic');
-
-    const mouse = {
-      x: 0,
-      y: 0,
-    };
-
-    let requestId;
-
-    function rotateTarget() {
-      const x = mouse.x / window.innerWidth;
-      const y = mouse.y / window.innerHeight;
-      const translateX = (x - 0.5) * 20;
-      const translateY = (y - 0.5) * 20;
-
-      target.style.transform = `translate3d(${translateX}px, ${translateY}px, 0)`;
-
-      requestId = requestAnimationFrame(rotateTarget);
-    }
-
-    container.addEventListener('mousemove', (e) => {
-      mouse.x = e.clientX;
-      mouse.y = e.clientY;
-
-      if (!requestId) {
-        requestId = requestAnimationFrame(rotateTarget);
-      }
-    });
-  }, []);
-
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
       <head />
-      <body className="container h-full text-[#b0baab]">
+      <body className="container h-full w-full text-[#b0baab]">
         <NavBar />
         <div className="container">
           <div
@@ -55,7 +16,7 @@ export default function RootLayout({
             }}
           >
             <Image
-              className="h-full w-full object-cover"
+              className="h-[110%] w-[110%] object-cover"
               src="/bg-original.jpeg"
               alt="bg-original"
               layout="fill"
