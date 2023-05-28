@@ -8,7 +8,7 @@ export default function AboutPage() {
       {/* page title */}
       <div className="mb-4 flex flex-col items-center">
         <div className="Barlow_Condensed text-[64px]">About</div>
-        <div className="text-2xl">明前奶绿的基本信息</div>
+        <div className="mb-2 text-2xl">明前奶绿的基本信息</div>
         <Image
           src="/person-info.png"
           width={400}
@@ -54,7 +54,7 @@ export default function AboutPage() {
               <p>
                 奶绿将在每周六的「鲜花与捕蝇草」栏目里和大家共同见证魔法的诞生。
               </p>
-              <p>——709438072461197417</p>
+              <p className="text-white">——709438072461197417</p>
             </div>
             <div className="grid gap-y-4">
               <p>LAPLACE 花店开业不顺，人气惨淡，店长下了</p>
