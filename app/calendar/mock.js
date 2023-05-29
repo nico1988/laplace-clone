@@ -239,6 +239,16 @@ function getRandomContent() {
   return contents[randomIndex];
 }
 
+function getDate(year, week, day) {
+  const date = new Date(year, 0, 1); // 初始化为当年的第一天
+  const dayOfWeek = date.getDay(); // 获取当年的第一天是星期几
+  const daysUntilTargetDay = (week - 1) * 7 + (day - dayOfWeek); // 获取到目标日期的天数差
+  date.setDate(date.getDate() + daysUntilTargetDay); // 将日期设置为目标日期
+  const month = String(date.getMonth() + 1).padStart(2, '0'); // 获取月份，需要加1，且保证两位数
+  const dayOfMonth = String(date.getDate()).padStart(2, '0'); // 获取日期，保证两位数
+  return `${month}/${dayOfMonth}`; // 返回日期字符串
+}
+
 function generateData(weekNum) {
   const list = [];
   for (let i = 1; i <= weekNum; i++) {
@@ -246,11 +256,11 @@ function generateData(weekNum) {
       date: `2023年第${i}周`,
       activities: [],
     };
-    for (let j = 0; j < 7; j++) {
-      const dayOfWeek = days[j];
+    for (let j = 1; j <= 7; j++) {
+      const dayOfWeek = days[j - 1];
       const activity = {
         type: getRandomCategory(),
-        time: `01/${i < 10 ? `0${i}` : i} ${dayOfWeek} ${getRandomTime()}`,
+        time: `${getDate(2023, i, j)} ${dayOfWeek} ${getRandomTime()}`,
         content: getRandomContent(),
       };
       week.activities.push(activity);
